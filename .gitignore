@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# environment / secrets
+.env
+.env.*
+*.key
+*.pem
+*.crt
+
+# database / runtime data
+db/
+data/
+mysql/
+mariadb/
+wordpress/
+nextcloud/
+webdav-data/
+bitcoin/
+
+# logs
+*.log
+logs/
+
+# backups
+*.bak
+*.backup
+*.tar
+*.tar.gz
+*.zip

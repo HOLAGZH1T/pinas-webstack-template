@@ -1,0 +1,28 @@
+services:
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - /mnt/web/webstack/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+  webdav:
+    image: httpd:2.4
+    container_name: webdav
+    restart: unless-stopped
+    volumes:
+      - /mnt/cloud/webdav/data:/var/webdav
+      - /mnt/cloud/webdav/var:/usr/local/apache2/var
+      - /mnt/cloud/webdav/conf/webdav.conf:/usr/local/apache2/conf/extra/webdav.conf:ro
+      - /mnt/cloud/webdav/conf/.htpasswd:/usr/local/apache2/conf/.htpasswd:ro
+    command: ["sh","-lc","grep -q 'Include conf/extra/webdav.conf' /usr/local/apache2/conf/httpd.conf || echo 'Include conf/extra/webdav.conf' >> /usr/local/apache2/conf/httpd.conf; exec /usr/local/apache2/bin/httpd -D FOREGROUND"]
+
+volumes:
+  caddy_data:
+  caddy_config:

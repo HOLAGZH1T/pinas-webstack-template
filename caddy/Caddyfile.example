@@ -1,0 +1,17 @@
+{
+    email ******@******.com
+}
+www-*******.dynv6.net {
+    reverse_proxy site1:80
+}
+wp-*******.dynv6.net {
+    reverse_proxy wordpress:80
+}
+cloud-*******.dynv6.net {
+    reverse_proxy webdav:80
+}
+******.de {
+  root * /mnt/*****
+  file_server
+  encode zstd gzip
+}
