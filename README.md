@@ -1,3 +1,41 @@
+# PiNAS Webstack Template
+
+A cleaned-up Docker and Caddy based webstack template for a Raspberry Pi home server.
+
+This repository is based on my personal PiNAS setup. The goal is to run self-hosted services and static websites on a Raspberry Pi using Docker Compose, Caddy and mounted external storage.
+
+## Features
+
+- Caddy reverse proxy
+- HTTPS-ready web server setup
+- Docker Compose based service structure
+- Example WebDAV container setup
+- Static website hosting structure
+- Raspberry Pi / Linux home-server oriented layout
+
+## Example Services
+
+- `caddy` — reverse proxy and web server
+- `webdav` — Apache-based WebDAV service
+
+## Example Folder Structure
+
+```text
+/mnt/web/
+├── webstack/
+│   ├── docker-compose.yml
+│   └── caddy/
+│       └── Caddyfile
+└── sites/
+    └── example-site/
+
+/mnt/cloud/
+└── webdav/
+    ├── data/
+    ├── var/
+    └── conf/
+        ├── webdav.conf
+        └── .htpasswd
 
 # PiNAS Webstack Template
 
